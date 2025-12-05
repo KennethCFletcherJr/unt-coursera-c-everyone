@@ -9,6 +9,13 @@ typedef struct list
 } list;
 
 // The function is simplified to only accept the node BEFORE the insertion point.
+
+/* Function Signature Changed: The original insert function required p1, p2, and q. In C linked lists, you only need a pointer to the node immediately preceding your insertion point to successfully rewire the links. The new function is named insert_after(list *prev_node, list *new_node). */
+
+/* Logic Reworked: The function insert_after efficiently inserts the new node with two steps:
+        ◦ new_node->next = prev_node->next;: q now points to where p1 used to point (which is p2).
+        ◦ prev_node->next = new_node;: p1 now points directly to q. */
+
 void insert_after(list *prev_node, list *new_node)
 {
     if (prev_node == NULL || new_node == NULL)
@@ -31,10 +38,13 @@ void print_list(list *head)
     }
     printf("NULL\n");
 }
-
+// main Function Added: A main function demonstrates the correct setup and usage. 
 int main(void)
 {
     // 1. Create the initial list structure: p1 -> p2
+    /*
+        Memory Management (malloc): You must dynamically allocate memory for each list node using malloc so they persist outside the current function scope and can be properly linked together. The original snippet was missing this crucial step. */
+
     list *p1 = malloc(sizeof(list));
     list *p2 = malloc(sizeof(list));
     list *q = malloc(sizeof(list));
