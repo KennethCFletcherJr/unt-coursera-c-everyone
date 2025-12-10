@@ -44,15 +44,15 @@ void print_day(enum day d)
 }
 enum day next_day(enum day d)
 {
-    return (d + 1 % 7);
+    return ((d + 1) % 7);
 }
 
 int main()
 {
-    enum day today = thu;
-    print_day(today); // Output: monday
+    enum day today = sat;
+    print_day(today); // Output:
     enum day tomorrow = next_day(today);
-    print_day(tomorrow); // Output: tuesday
+    print_day(tomorrow); // Output:
     return 0;
 }
 
