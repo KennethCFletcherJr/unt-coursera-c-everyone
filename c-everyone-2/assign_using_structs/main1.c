@@ -28,17 +28,19 @@ typedef struct date
 /* In order to print out the month and the day correctly, the number of days per month have to be accounted for by creating an array of the number of days per month. The number of days per month is also equal to the last day of the month, and the last days can be used to account for and facilitate rollover from one month to another month based on the last day of the previous month. An array of 13 elements listing the number of days per month was created for 12 months, beginning with 0 as a placeholder and used to screen */
 bool is_valid_date(date today)
 {
-    // Create an if else statement with an expression to limit the range of months between January and December, using the logical OR operator to read false for out of
-    // range months.
-    int days_in_month[] = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 
+    int days_in_month[] = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+    // Create an if else statement with an expression to limit the range to months between January and
+    // December, using the logical OR operator to read false for out of range months.
     if (today.m < jan || today.m > dec)
     {
         return false;
     }
-    // Create an if else statemnt with an expression by limiting the range of the days in each month to be between 1 and the maximum/last day of the month for the current
-    // month. using an appropriate expression with a logical OR operator to rule out numbers that are out of range using the days_in_month() function using the logical OR
-    // operator.
+    // Create an if else statement with an expression by limiting the range of the days in each month
+    // to be between 1 and the maximum/last day of the month for the current
+    // month, using an appropriate expression with a logical OR operator to rule out numbers that are
+    // out of range using the days_in_month() function using the logical OR operator.
+
     if (today.d < 1 || today.d > days_in_month[today.m])
     {
         return false;
